@@ -21,16 +21,13 @@ Mpeg1Muxer = function(options) {
     }
   }
   this.spawnOptions = [
-    "-rtsp_transport",
-    "tcp",
-    "-i",
+    "-rtsp_transport", "tcp", "-i",
     this.url,
-    '-f',
-    'mpeg1video',
-    '-b:v', '6144k',     // Set video average bitrate (default=200k)
-    '-maxrate', '8000k', // This is the maximum bitrate. serves to set the upper limit
-    '-bufsize', '4000k', // This option Specifies the output buffer. When video is played, video data equal to this value is prepared in memory
-    '-an', '-r', '24',
+    '-f', 'mpegts',
+    '-codec:v', 'mpeg1video',
+    '-b:v', '6144k',
+    '-crf',
+    '-an',
     // additional ffmpeg options go here
     ...this.additionalFlags,
     '-'
