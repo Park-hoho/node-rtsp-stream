@@ -115,7 +115,7 @@ VideoStream.prototype.onSocketConnect = function(socket, request) {
   var streamHeader
   // Send magic bytes and video size to the newly connected socket
   // struct { char magic[4]; unsigned short width, height;}
-  streamHeader = new Buffer(8)
+  streamHeader = new Buffer.alloc(8)
   streamHeader.write(STREAM_MAGIC_BYTES)
   streamHeader.writeUInt16BE(this.width, 4)
   streamHeader.writeUInt16BE(this.height, 6)

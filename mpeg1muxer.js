@@ -21,12 +21,12 @@ Mpeg1Muxer = function(options) {
     }
   }
   this.spawnOptions = [
+    '-loglevel', 'panic',
     "-rtsp_transport", "tcp", "-i",
     this.url,
     '-f', 'mpegts',
     '-codec:v', 'mpeg1video',
-    '-b:v', '6144k',
-    '-crf',
+    '-crf', '18',
     '-an',
     // additional ffmpeg options go here
     ...this.additionalFlags,
